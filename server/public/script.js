@@ -1,5 +1,11 @@
-const BASE_URL = "https://projeto-previsao-do-tempo-com-ia.onrender.com";
+// ================================
+// BASE_URL DO BACKEND (Render)
+// ================================
+const BASE_URL = "https://projeto-previsao-do-tempo-com-ia.onrender.com"; // seu link do Render
 
+// ================================
+// FUNÇÃO: Buscar previsão do tempo
+// ================================
 async function clicarNoBotao() {
     const cidade = encodeURIComponent(
         document.querySelector('.input-cidade').value
@@ -29,6 +35,9 @@ async function clicarNoBotao() {
     }
 }
 
+// ================================
+// FUNÇÃO: Reconhecimento de voz
+// ================================
 function falarVoz() {
     const reconhecimento = new window.webkitSpeechRecognition();
     reconhecimento.lang = "pt-BR";
@@ -42,6 +51,9 @@ function falarVoz() {
     };
 }
 
+// ================================
+// FUNÇÃO: Sugestão de roupa pela IA
+// ================================
 async function sugestaoIA() {
     const temperatura = document.querySelector('.temperatura').textContent;
     const umidade = document.querySelector('.umidade').textContent;
