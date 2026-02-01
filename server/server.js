@@ -1,17 +1,25 @@
 import express from "express";
 import fetch from "node-fetch";
 import dotenv from "dotenv";
+import cors from "cors";
 
 dotenv.config(); // Lê as variáveis do .env
 
 const app = express();
 app.use(express.json());
 
-app.use(express.static('public'));
-
+// ================================
+// Habilita CORS para permitir acesso do front-end
+// ================================
+app.use(cors());
 
 // ================================
-// ROTA RAIZ (TESTE)
+// Servir arquivos estáticos (caso queira usar pasta public)
+// ================================
+app.use(express.static('public'));
+
+// ================================
+// ROTA RAIZ
 // ================================
 app.get("/", (req, res) => {
   res.send("API de previsão do tempo com IA rodando 🚀");
