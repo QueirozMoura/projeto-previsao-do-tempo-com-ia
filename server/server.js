@@ -8,6 +8,13 @@ const app = express();
 app.use(express.json());
 
 // ================================
+// ROTA RAIZ (TESTE)
+// ================================
+app.get("/", (req, res) => {
+  res.send("API de previsão do tempo com IA rodando 🚀");
+});
+
+// ================================
 // ENDPOINT: PREVISÃO DO TEMPO
 // ================================
 app.get("/weather/:cidade", async (req, res) => {
@@ -69,7 +76,7 @@ Com base nisso, sugira uma roupa adequada para hoje.
 // ================================
 // INICIAR SERVIDOR
 // ================================
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-  console.log(`Servidor rodando em http://localhost:${PORT}`)
-);
+const PORT = process.env.PORT || 10000;
+app.listen(PORT, () => {
+  console.log(`Servidor rodando em http://localhost:${PORT}`);
+});
