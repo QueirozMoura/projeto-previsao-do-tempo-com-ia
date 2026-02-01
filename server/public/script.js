@@ -1,11 +1,12 @@
+const BASE_URL = "https://projeto-previsao-do-tempo-com-ia.onrender.com";
+
 async function clicarNoBotao() {
     const cidade = encodeURIComponent(
         document.querySelector('.input-cidade').value
     );
 
     const caixaMedia = document.querySelector('.caixa-media');
-    // URL relativa para funcionar no Render também
-    const endereco = `/weather/${cidade}`;
+    const endereco = `${BASE_URL}/weather/${cidade}`;
 
     try {
         const respostaServidor = await fetch(endereco);
@@ -50,8 +51,7 @@ async function sugestaoIA() {
     descricao.textContent = "🤖 Pensando na melhor roupa...";
 
     try {
-        // URL relativa também
-        const resposta = await fetch("/ia/roupa", {
+        const resposta = await fetch(`${BASE_URL}/ia/roupa`, {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
