@@ -7,6 +7,9 @@ dotenv.config(); // Lê as variáveis do .env
 const app = express();
 app.use(express.json());
 
+app.use(express.static('public'));
+
+
 // ================================
 // ROTA RAIZ (TESTE)
 // ================================
