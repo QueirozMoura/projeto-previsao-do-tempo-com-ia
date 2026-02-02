@@ -3,31 +3,23 @@ import fetch from "node-fetch";
 import dotenv from "dotenv";
 import cors from "cors";
 
-dotenv.config(); // Lê as variáveis do .env
+dotenv.config();
 
 const app = express();
 app.use(express.json());
 
-// ================================
-// Habilita CORS para permitir acesso do front-end
-// ================================
+
 app.use(cors());
 
-// ================================
-// Servir arquivos estáticos (caso queira usar pasta public)
-// ================================
+
 app.use(express.static('public'));
 
-// ================================
-// ROTA RAIZ
-// ================================
+
 app.get("/", (req, res) => {
   res.send("API de previsão do tempo com IA rodando 🚀");
 });
 
-// ================================
-// ENDPOINT: PREVISÃO DO TEMPO
-// ================================
+
 app.get("/weather/:cidade", async (req, res) => {
   const cidade = req.params.cidade;
   const chaveWeather = process.env.CHAVE_WEATHER;
@@ -43,9 +35,7 @@ app.get("/weather/:cidade", async (req, res) => {
   }
 });
 
-// ================================
-// ENDPOINT: IA (SUGESTÃO DE ROUPA)
-// ================================
+
 app.post("/ia/roupa", async (req, res) => {
   const { cidade, temperatura, umidade } = req.body;
   const chaveIA = process.env.CHAVE_IA;
@@ -84,9 +74,7 @@ Com base nisso, sugira uma roupa adequada para hoje.
   }
 });
 
-// ================================
-// INICIAR SERVIDOR
-// ================================
+
 const PORT = process.env.PORT || 10000;
 app.listen(PORT, () => {
   console.log(`Servidor rodando em http://localhost:${PORT}`);
